@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="/static/element/index.css">
+
+  <style type="text/css">
+    @supports (-webkit-mask: none) and (not (cater-color: #292929)) {
+      .login-container .el-input input {
+        margin-left: 20px;
+        color: #292929
+      }
+
+      .login-container .el-input input::first-line {
+        color: #000
+      }
+    }
+
+    .login-container .el-tabs__item {
+      color: #000
+    }
+
+    #loginOnlyCss.login-container .el-form-item {
+      border: 0px !important;
+      border-bottom: 1px solid #999 !important;
+      border-radius: 0px !important
+    }
+
+    #loginOnlyCss.login-container .el-input {
+      display: inline-block;
+      height: 47px;
+      width: 70%
+    }
+
+    #loginOnlyCss.login-container .el-input input {
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+      border-radius: 0;
+      padding: 12px 5px 12px 10px;
+      margin-left: 46px;
+      background: rgba(0, 0, 0, 0) !important;
+      color: #000;
+      height: 40px;
+      caret-color: #c0c4cc
+    }
+
+    #loginOnlyCss.login-container .el-input input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px white inset;
+      -webkit-text-fill-color: #292929 !important
+    }
+
+    #loginOnlyCss.login-container .el-input ::-webkit-input-placeholder {
+      font-weight: 500
+    }
+
+    #loginOnlyCss.login-container .el-input :-moz-placeholder {
+      font-weight: 500
+    }
+
+    #loginOnlyCss.login-container .el-input ::-moz-placeholder {
+      font-weight: 500
+    }
+
+    #loginOnlyCss.login-container .el-input :-ms-input-placeholder {
+      font-weight: 500
+    }
+
+    #loginOnlyCss.login-container .yzm input {
+      margin-left: 10px;
+      padding: 12px 5px 12px 5px
+    }
+
+    #loginOnlyCss.login-container .el-form-item__content {
+      line-height: 30px;
+      position: relative;
+      font-size: 14px;
+      height: 42px
+    }
+
+    #loginOnlyCss.login-container .el-form-item {
+      border: 1px solid #c0c4cc;
+      background: rgba(0, 0, 0, 0);
+      border-radius: 5px;
+      color: #454545
+    }
+
+    #loginOnlyCss.login-container .el-tabs__item {
+      padding: 0 20px;
+      height: 40px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      line-height: 40px;
+      display: inline-block;
+      list-style: none;
+      font-size: 19px;
+      font-weight: 500;
+      position: relative
+    }
+
+    .btn-login {
+      width: 100%;
+      margin-bottom: 10px
+    }
+
+    .btn-login2 {
+      width: 100%;
+      margin-bottom: 10px
+    }
+  </style>
+  <style type="text/css">
+    .login-container {
+      overflow: auto;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      background-color: #fff
+    }
+
+    .login-container a {
+      color: #808080
+    }
+
+    .login-container a:hover {
+      color: #3399ff;
+      text-decoration: none
+    }
+
+    .login-container .login-header {
+      height: 164px;
+      width: 100%
+    }
+
+    .login-container .login-header-con {
+      margin: 0px auto;
+      padding: 19.6px 0px;
+      width: 1200px
+    }
+
+    .login-container .login-header-con2 {
+      margin: 0px auto;
+      width: 1200px;
+      padding: 24px 0px 18px 0px
+    }
+
+    .login-container .login-header-con2 .welcome {
+      font-size: 34px;
+      color: #000;
+      margin-left: 30px;
+      line-height: 34px;
+      font-weight: 500
+    }
+
+    .login-container .loginBody {
+      min-width: 1200px;
+      background: url(/static/img/backgroundImg.png) no-repeat center;
+      background-size: cover;
+      height: 650px
+    }
+
+    .login-container .loginBody .el-button {
+      padding: 14px 10px;
+      font-size: 16px;
+      font-weight: 500
+    }
+
+    .login-container .bodyImage {
+      position: absolute;
+      background-size: contain
+    }
+
+    .login-container .bodyLaylout {
+      position: absolute;
+      top: 114px;
+      right: 10px;
+      width: 460px;
+      height: 360px;
+      background-color: white;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 40px 51px 35px 51px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2)
+    }
+
+    .login-container .el-form-item {
+      border: 0px
+    }
+
+    .login-container .loginFooter {
+      height: 70px;
+      width: 100%
+    }
+
+    .login-container .login-form {
+      width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      height: 536px
+    }
+
+    .login-container .formFooter {
+      text-align: center;
+      line-height: 32px;
+      height: 32px;
+      margin: 0 -25px;
+      width: 400px;
+      background-color: rgba(216, 208, 208, 0.17)
+    }
+
+    .login-container .el-button--primary:hover,
+    .login-container .el-button--primary:focus {
+      background: #66b1ff;
+      border-color: #66b1ff;
+      color: #fff;
+      box-shadow: 10px 10px 10px #e4e7ed
+    }
+
+    .login-container .tips {
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 26px
+    }
+
+    .login-container .tips span:first-of-type {
+      margin-right: 16px
+    }
+
+    .login-container .svg-container {
+      padding: 6px 5px 6px 15px;
+      color: #889aa4;
+      vertical-align: middle;
+      width: 30px;
+      display: inline-block;
+      position: absolute
+    }
+
+    .login-container .title-container {
+      position: relative
+    }
+
+    .login-container .title-container .title {
+      font-size: 26px;
+      color: #000;
+      margin: 0 auto 40px auto;
+      text-align: center;
+      font-weight: bold
+    }
+
+    .login-container .title-container .set-language {
+      color: #fff;
+      position: absolute;
+      top: 5px;
+      right: 0
+    }
+
+    .login-container .show-pwd {
+      position: absolute;
+      right: 10px;
+      top: 7px;
+      font-size: 16px;
+      color: #889aa4;
+      cursor: pointer;
+      user-select: none
+    }
+
+    .login-container .thirdparty-button {
+      position: absolute;
+      right: 35px;
+      bottom: 28px
+    }
+
+    .login-container .el-form-item__content {
+      line-height: 30px;
+      position: relative;
+      font-size: 14px;
+      height: 42px
+    }
+
+    .header {
+      width: 100%;
+      height: 80px;
+      position: fixed;
+      z-index: 9;
+      background: #fff;
+      box-shadow: 1px 1px 10px #929292
+    }
+
+    .detail {
+      width: 1130px;
+      margin: 0 auto
+    }
+
+    .header img.logo {
+      height: 42px;
+      margin-top: 19px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="login-container" id="loginOnlyCss">
+      <div class="header" id="top">
+        <div class="detail clearfix">
+          <!-- <div class="customer_service" style="float:right;width: 200px!important;">
+                     
+               </div>-->
+          <a href="#">
+            <img src="/static/img/logo.png" alt class="logo">
+          </a>
+        </div>
+      </div>
+      <div class="loginBody" id="loginBody">
+        <div class="login-form" id="login-form">
+          <div class="bodyImage" id="bodyImage"></div>
+          <div class="bodyLaylout" id="bodyLaylout">
+            <el-tabs v-model="activeName" :stretch="true">
+              <el-tab-pane label="用户登录" name="userName">
+                <div>
+                  <el-form ref="loginForm" :model="loginForm" :rules="loginRules">
+                    <el-form-item prop="username">
+                      <span class="svg-container">
+                        <img src="/static/img/zh.png">
+                      </span>
+                      <el-input v-model="loginForm.username" placeholder="请输入账号" name="username" type="text" />
+                    </el-form-item>
+
+                    <el-form-item prop="password">
+                      <span class="svg-container">
+                        <img src="/static/img/mm.png">
+                      </span>
+                      <el-input v-model="loginForm.password" placeholder="请输入登录密码" name="password" auto-complete="on"
+                        type="password" @keyup.enter.native="handleLogin" />
+
+                    </el-form-item>
+
+                  </el-form>
+                </div>
+                <div class="tips" style="height:24px;">
+                  <el-row>
+                    <el-col :span="12">
+                      <el-checkbox v-model="checked" style="color:#000">记住密码</el-checkbox>
+                    </el-col>
+
+                  </el-row>
+                </div>
+              </el-tab-pane>
+            </el-tabs>
+            <div>
+              <el-button :loading="loading" type="primary" class="btn-login" @click.native.prevent="handleLogin">登录
+              </el-button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="loginFooter">
+        <div style="text-align: center;min-height: 70px;padding-top: 40px;">
+          <el-row>
+            <span style="color: #808080;font-size: 14px">Copyright&nbsp;©&nbsp;2019&nbsp;中国紫光集团有限公司版权所有<br /></span>
+          </el-row>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- import Vue before Element -->
+<script src="/static/vue/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="/static/element/index.js"></script>
+<script src="/static/js.cookie.js"></script>
+<script src="/static/jsencrypt.min.js"></script>
+<script src="/static/axios.min.js"></script>
+<script>
+  
+var  TokenKey = 'Admin-Token'
+  function getToken() {
+    return Cookies.get(TokenKey)
+  }
+  function loginByEmail(data) {
+
+    return fetch({
+      url: '/api/auth/jwt/token',
+      method: 'post',
+      data: data
+    });
+  }
+  function loadJs(url){
+
+    var script=document.createElement('script');
+    script.type="text/javascript";
+    script.src=url; 
+    document.body.appendChild(script);
+ }
+  function setToken(token) {
+    return Cookies.set(TokenKey, token)
+  }
+
+  function removeToken() {
+    return Cookies.remove(TokenKey)
+  }
+  function initLayout() {
+    let devicePixelRatio = 1;
+    if (sessionStorage.getItem("devicePixelRatio") != null) {
+      let num = window.devicePixelRatio / Number(sessionStorage.getItem("devicePixelRatio"));
+      devicePixelRatio = num.toFixed(2);
+    } else {
+      sessionStorage.setItem("devicePixelRatio", window.devicePixelRatio);
+    }
+
+
+
+    let h = `${document.documentElement.clientHeight * devicePixelRatio}` - 55
+    return h
+
+  }
+  Vue.prototype.$getCode = function (pass, pubkey) {
+    let encryptor = new JSEncrypt()
+    encryptor.setPublicKey(pubkey)
+    let rsaPassWord = encryptor.encrypt(pass)
+    return rsaPassWord
+  }
+  new Vue({
+    el: '#app',
+    data: function () {
+      const validatePass = (rule, value, callback) => {
+        if (value.length < 5) {
+          callback(new Error("密码不能小于5位"));
+        } else {
+          callback();
+        }
+      };
+
+      return {
+        activeName: "userName",
+        loginInfo: {
+          loginName: "请输入用户名",
+          password: "请输入密码",
+          logIn: "登录"
+        },
+        checked: false,
+        isShow: false,
+        loginForm: {
+          username: "",
+          password: ""
+        },
+        loginRules: {
+          username: [
+            {
+              required: true,
+              message: "账户不能为空",
+              trigger: "blur"
+            },
+            {
+              min: 3,
+              max: 20,
+              message: "长度在 3 到 20 个字符",
+              trigger: "blur"
+            }
+          ],
+          password: [
+            {
+              required: true,
+              trigger: "blur",
+              validator: validatePass
+            }
+          ]
+        },
+        loading: false,
+      };
+    },
+
+    watch: {
+      yzmSwitch(val, oldVal) {
+        if (val) {
+          document.getElementById("bodyLaylout").style.height = 422 + "px";
+        }
+      },
+      activeName(val, oldVal) {
+        if (val == "userName") {
+          if (this.yzmSwitch) {
+            document.getElementById("bodyLaylout").style.height = 422 + "px";
+          } else {
+            document.getElementById("bodyLaylout").style.height = 360 + "px";
+          }
+        } else {
+          document.getElementById("bodyLaylout").style.height = 360 + "px";
+        }
+      }
+    },
+    created: function () { },
+    destroyed: function () { },
+    mounted: function () {
+      this.init();
+    },
+    methods: {
+      //清除cookie
+      clearCookie: function () {
+        Cookies.remove('username');
+        Cookies.remove('password');
+      },
+      //设置cookie
+      setCookie: function () {
+        Cookies.set('username', this.loginForm.username);
+        Cookies.set('password', this.loginForm.password);
+      },
+      //检测cookie
+      checkCookie: function () {
+        return false
+        setTimeout(() => {
+          this.isShow = true;
+          if (typeof (Cookies.get("username")) != "undefined") {
+            this.checked = true;
+            this.loginForm.username = Cookies.get("username");
+            this.loginForm.password = Cookies.get("password");
+          } else {
+            this.checked = false;
+            this.clearCookie();
+            this.loginForm.username = "";
+            this.loginForm.password = "";
+            this.$refs.loginForm.resetFields()
+          }
+        }, 5);
+      },
+      init: function () {
+        console.log(getToken(),99999);
+        
+        if (getToken()) {
+          window.location.href="/main.html#/dashboard"
+        }
+        sessionStorage.clear();
+        let clientHeight = initLayout();
+        let height = clientHeight - 70;
+        let heigth2 = 0;
+        // // 页面高度-登录框高度
+        if (height - 438 > 0) {
+          heigth2 = Math.floor((height - 400 - 80) / 2);
+        }
+        document.getElementById("loginBody").style.height = height + "px";
+        document.getElementById("login-form").style.height = height + "px";
+
+        document.getElementById("bodyLaylout").style.top = (heigth2 + 80) + "px";
+        setTimeout(() => {
+ 
+        loadJs("/static/dll/core.bundle.js");
+        loadJs("/static/echarts/echarts.min.js");
+        loadJs("/static/dll/puzzle.bundle.js");
+        }, 2000);
+        
+      },
+      //清除cookie
+      clearCookie: function () {
+        Cookies.remove('username');
+        Cookies.remove('password');
+      },
+      //设置cookie
+      setCookie: function () {
+        Cookies.set('username', this.loginForm.username);
+        Cookies.set('password', this.loginForm.password);
+      },
+      //检测cookie
+      checkCookie: function () {
+        setTimeout(() => {
+          this.isShow = true;
+          if (typeof (Cookies.get("username")) != "undefined") {
+            this.checked = true;
+            this.loginForm.username = Cookies.get("username");
+            this.loginForm.password = Cookies.get("password");
+          } else {
+            this.checked = false;
+            this.clearCookie();
+            this.loginForm.username = "";
+            this.loginForm.password = "";
+            this.$refs.loginForm.resetFields()
+          }
+        }, 5);
+      },
+      handleLogin: function () {
+        var getCode = this.$getCode;
+        let params = {};
+        this.$refs.loginForm.validate(valid => {
+          if (valid) {
+            if (this.checked) {
+              this.setCookie();
+            } else {
+              this.checked = false;
+              this.clearCookie();
+            }
+            params = this.loginForm;
+            this.loading = true;
+            axios.get('/api/auth/jwt/getRsaPublicKey').then(function (res) {
+              var publicKey = res.data.pubkey;
+              axios.post('/api/auth/jwt/token',  { rsamsg: getCode(JSON.stringify(params), publicKey)}).then(function (response) {
+                this.loading = false;
+    
+                if(typeof response.data.data!="undefined"){
+                  if(response.data.data!=""){
+                  setToken(response.data.data);
+                  sessionStorage.setItem("modelCode","dashboard");
+              let tabViewsData=[{"name":"首页","path":"/dashboard","iframeUrl":"","modelCode":"dashboard"}];
+              sessionStorage.setItem("tabViewsData",JSON.stringify(tabViewsData));
+                  window.location.href="/main.html#/dashboard"
+                  }
+                }
+              }).catch(function (response) {
+                this.loading = false;
+
+              });
+
+            })
+          }
+        })
+      }
+    }
+  })
+</script>
+
+</html>
